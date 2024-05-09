@@ -1,5 +1,5 @@
 Primera versió:
 - Classes backend creades
 - Activities fetes - funciona moure de classe en classe
-- Falta implementar Retrofit
+- Implementar Retrofit en procés
 - Falta implementar funcions lògiques
