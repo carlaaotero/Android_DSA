@@ -8,17 +8,20 @@ import retrofit2.http.Header;
 import retrofit2.http.POST;
 public interface API {
     //Un usuari es registra
-    @POST("/registre")
+    @POST("/usuaris/registreUsuari")
     Call<RegisterComp> registre(@Body RegisterComp register);
+
     //Un usuari inicia sessió
-    @POST("/login")
+    @POST("/usuaris/login")
     Call<LoginComp> login(@Body LoginComp login);
-    //Per auntenticar l'usuari
-    @GET("/user")
-    Call<Usuari> getUserDetails(@Header("Authorization") String credentials);
+
     //Retorna una llista amb els objectes de la botiga
+    @GET("/items/llista")
+    Call<Item> getItems(@Body Item llistaItem);
 
-    /* @GET("/shop")
-    Call<Void> botiga(@Body Botiga camiseta);*/
+    //FALTA @POST per quan compres un item
 
+    //Per auntenticar l'usuari
+    // @GET("/user")
+    //Call<Usuari> getUserDetails(@Header("Authorization") String credentials);
 }

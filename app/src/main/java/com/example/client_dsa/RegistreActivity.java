@@ -45,47 +45,46 @@ public class RegistreActivity extends AppCompatActivity {
 
         registre = findViewById(R.id.registre);
 
+        api = APIimp.getAPI();
 
-        registre.setOnClickListener(new View.OnClickListener() {
-
-            public void onClick(View v) {
-                //S'obté les dades introduïdes per l'usuari
-                String nombre = nom.getText().toString();
-                String apellido = cognom.getText().toString();
-                String username = nomUsuari.getText().toString();
-                String password = contra.getText().toString();
-                String password2 = contra2.getText().toString();
-
-                //FER FUNCIÓ DE SI S'HA REALITZAT BÉ EL REGISTRE FA EL SEGÜENT:
-                Intent intent = new Intent(RegistreActivity.this, LoginActivity.class);
-                startActivity(intent);
-
-            }
-        });
-
+        //S'obté les dades introduïdes per l'usuari
         String nombre = nom.getText().toString();
         String apellido = cognom.getText().toString();
         String username = nomUsuari.getText().toString();
         String password = contra.getText().toString();
         String password2 = contra2.getText().toString();
-        RegisterComp registerComp = new RegisterComp(nombre, apellido, username, password, password2);
-        Callback<RegisterComp> tCallback = new Callback<RegisterComp>() {
+
+
+        registre.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onResponse(Call<RegisterComp> call, Response<RegisterComp> response) {
-                Log.d("PROVA", "TINC RESPOSTA");
+            public void onClick(View view) {
+                Log.d("Valor nom:", String.valueOf(nombre));
+
+                RegisterComp registreComp = new RegisterComp(nombre, apellido, username, password, password2);
+
+                api.registre(registreComp).enqueue(new Callback<RegisterComp>() {
+                    @Override
+                    public void onResponse(Call<RegisterComp> call, Response<RegisterComp> response) {
+                        Log.d("REGISTRE", "201 OK");
+                        Intent intent = new Intent(RegistreActivity.this, LoginActivity.class);
+                        startActivity(intent);
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<RegisterComp> call, Throwable t) {
+                        Log.d("REGISTRE", "ERROR");
+                    }
+                });
+
+
             }
 
-            @Override
-            public void onFailure(Call<RegisterComp> call, Throwable t) {
-                Log.d("PROVA", "TINC UN ERROR");
+            public void anarLogin(View view) {
+                Intent intent = new Intent(RegistreActivity.this, LoginActivity.class);
+                startActivity(intent);
             }
-        };
-        api.registre(registerComp).enqueue(tCallback);
 
-    }
-    public void anarLogin(View view)
-    {
-        Intent intent = new Intent(RegistreActivity.this, LoginActivity.class);
-        startActivity(intent);
+        });
     }
 }

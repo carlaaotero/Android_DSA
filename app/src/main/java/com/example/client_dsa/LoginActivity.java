@@ -1,6 +1,5 @@
 package com.example.client_dsa;
 
-import com.example.client_dsa.Classes.*;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,6 +8,8 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.client_dsa.Classes.LoginComp;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -31,15 +32,43 @@ public class LoginActivity extends AppCompatActivity {
         loginButton = findViewById(R.id.loginButton);
         registreButton = findViewById(R.id.registreButton);
 
+        api = APIimp.getAPI();
+
+        //S'obté les dades introduïdes per l'usuari
+        String username = nomUsuari.getText().toString();
+        String password = contra.getText().toString();
+
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //FER FUNCIÓ DE SI S'HA REALITZAT BÉ EL LOGIN FA EL SEGÜENT:
-                Intent intent = new Intent(LoginActivity.this, PrincipalActivity.class);
-                startActivity(intent);
+                Log.d("Valor usuari:", String.valueOf(username));
+                Log.d("Valor contra:", String.valueOf(password));
+
+                LoginComp loginComp = new LoginComp(username, password);
+
+                api.login(loginComp).enqueue(new Callback<LoginComp>() {
+                    @Override
+                    public void onResponse(Call<LoginComp> call, Response<LoginComp> response) {
+                        Log.d("LOGIN", "200 OK");
+
+                        Intent intent = new Intent(LoginActivity.this, PrincipalActivity.class);
+                        startActivity(intent);
+                    }
+
+                    @Override
+                    public void onFailure(Call<LoginComp> call, Throwable t) {
+                        Log.d("LOGIN", "ERROR");
+                    }
+                });
+
+
             }
 
         });
+
+
+
+
         registreButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -48,24 +77,6 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-        //S'obté les dades introduïdes per l'usuari
-        String username = nomUsuari.getText().toString();
-        String password = contra.getText().toString();
-
-        LoginComp loginComp = new LoginComp(username, password);
-        Callback<LoginComp> tCallback = new Callback<LoginComp>() {
-            @Override
-            public void onResponse(Call<LoginComp> call, Response<LoginComp> response) {
-                Log.d("PROVA", "TINC RESPOSTA");
-            }
-
-            @Override
-            public void onFailure(Call<LoginComp> call, Throwable t) {
-                Log.d("PROVA", "TINC UN ERROR");
-            }
-        };
-        api.login(loginComp).enqueue(tCallback);
     }
     public void anarPrincipal(View view)
     {
