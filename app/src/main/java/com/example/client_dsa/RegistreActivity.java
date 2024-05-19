@@ -47,35 +47,47 @@ public class RegistreActivity extends AppCompatActivity {
 
         api = APIimp.getAPI();
 
-        //S'obté les dades introduïdes per l'usuari
-        String nombre = nom.getText().toString();
-        String apellido = cognom.getText().toString();
-        String username = nomUsuari.getText().toString();
-        String password = contra.getText().toString();
-        String password2 = contra2.getText().toString();
+
+
 
 
         registre.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d("Valor nom:", String.valueOf(nombre));
+                //S'obté les dades introduïdes per l'usuari
+                String nombre = nom.getText().toString();
+                String apellido = cognom.getText().toString();
+                String username = nomUsuari.getText().toString();
+                String password = contra.getText().toString();
+                String password2 = contra2.getText().toString();
 
-                RegisterComp registreComp = new RegisterComp(nombre, apellido, username, password, password2);
 
-                api.registre(registreComp).enqueue(new Callback<RegisterComp>() {
-                    @Override
-                    public void onResponse(Call<RegisterComp> call, Response<RegisterComp> response) {
-                        Log.d("REGISTRE", "201 OK");
-                        Intent intent = new Intent(RegistreActivity.this, LoginActivity.class);
-                        startActivity(intent);
+                    RegisterComp registreComp = new RegisterComp(nombre, apellido, username, password, password2);
+                    Call<RegisterComp> call = api.registre(registreComp);
 
-                    }
+                    api.registre(registreComp).enqueue(new Callback<RegisterComp>() {
+                        @Override
+                        public void onResponse(Call<RegisterComp> call, Response<RegisterComp> response) {
+                            if(!response.isSuccessful()){
+                                Log.d("REGISTRET","USUARI NO REGISTRAT");
+                                Toast.makeText(RegistreActivity.this,"User name already register", Toast.LENGTH_LONG).show();
+                                return;
+                            }
+                                    Log.d("REGISTRE", "201 OK");
 
-                    @Override
-                    public void onFailure(Call<RegisterComp> call, Throwable t) {
-                        Log.d("REGISTRE", "ERROR");
-                    }
-                });
+                            RegisterComp usuari = response.body();
+                            Toast.makeText(RegistreActivity.this,"User registrated", Toast.LENGTH_LONG).show();
+                            Intent intent = new Intent(RegistreActivity.this, LoginActivity.class);
+                            startActivity(intent);
+
+                        }
+
+                        @Override
+                        public void onFailure(Call<RegisterComp> call, Throwable t) {
+                            Log.d("REGISTRE", "ERROR");
+                        }
+                    });
+
 
 
             }
