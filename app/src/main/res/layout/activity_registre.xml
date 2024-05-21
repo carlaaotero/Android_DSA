@@ -76,7 +76,6 @@
         android:id="@+id/registre"
         android:layout_width="113dp"
         android:layout_height="56dp"
-        android:onClick="anarLogin"
         android:text="Registre"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

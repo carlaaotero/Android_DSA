@@ -48,9 +48,6 @@ public class RegistreActivity extends AppCompatActivity {
         api = APIimp.getAPI();
 
 
-
-
-
         registre.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -61,40 +58,43 @@ public class RegistreActivity extends AppCompatActivity {
                 String password = contra.getText().toString();
                 String password2 = contra2.getText().toString();
 
+                //validar que les constrasenyes coincideixen
+                if(!password.equals(password2)){
+                    Toast.makeText(RegistreActivity.this, "Les constrasenyes no coincideixen", Toast.LENGTH_LONG).show();
+                }
 
-                    RegisterComp registreComp = new RegisterComp(nombre, apellido, username, password, password2);
-                    Call<RegisterComp> call = api.registre(registreComp);
+                RegisterComp registreComp = new RegisterComp(nombre, apellido, username, password, password2);
+                Call<RegisterComp> call = api.registre(registreComp);
 
-                    api.registre(registreComp).enqueue(new Callback<RegisterComp>() {
-                        @Override
-                        public void onResponse(Call<RegisterComp> call, Response<RegisterComp> response) {
-                            if(!response.isSuccessful()){
-                                Log.d("REGISTRET","USUARI NO REGISTRAT");
-                                Toast.makeText(RegistreActivity.this,"User name already register", Toast.LENGTH_LONG).show();
-                                return;
-                            }
-                                    Log.d("REGISTRE", "201 OK");
+                call.enqueue(new Callback<RegisterComp>() {
+                    @Override
+                    public void onResponse(Call<RegisterComp> call, Response<RegisterComp> response) {
 
-                            RegisterComp usuari = response.body();
-                            Toast.makeText(RegistreActivity.this,"User registrated", Toast.LENGTH_LONG).show();
-                            Intent intent = new Intent(RegistreActivity.this, LoginActivity.class);
-                            startActivity(intent);
-
+                        if(!response.isSuccessful()){
+                            Log.d("REGISTRE","USUARI NO REGISTRAT");
+                            Toast.makeText(RegistreActivity.this,"Error al registrar", Toast.LENGTH_LONG).show();
+                            return;
                         }
 
-                        @Override
-                        public void onFailure(Call<RegisterComp> call, Throwable t) {
-                            Log.d("REGISTRE", "ERROR");
-                        }
-                    });
+                        Log.d("REGISTRE", "201 OK");
+
+                        //RegisterComp usuari = response.body();
+                        Toast.makeText(RegistreActivity.this,"User registrated", Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(RegistreActivity.this, LoginActivity.class);
+                        startActivity(intent);
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<RegisterComp> call, Throwable t) {
+                        Log.d("REGISTRE", "ERROR:" + t.getMessage());
+                        Toast.makeText(RegistreActivity.this,"ERROR:" + t.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+
+                });
 
 
 
-            }
-
-            public void anarLogin(View view) {
-                Intent intent = new Intent(RegistreActivity.this, LoginActivity.class);
-                startActivity(intent);
             }
 
         });
