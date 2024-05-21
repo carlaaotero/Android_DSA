@@ -44,6 +44,9 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
+    implementation ("com.squareup.okhttp3:okhttp:3.11.0")
+    implementation ("com.squareup.okhttp3:logging-interceptor:3.11.0")
+    implementation ("com.github.bumptech.glide:glide:4.7.1")
     implementation("com.squareup.retrofit2:retrofit:2.1.0")
     implementation("com.squareup.retrofit2:converter-gson:2.1.0")
     implementation ("com.squareup.picasso:picasso:2.71828")// Per fer servir Picasso per les imatges de la Botiga

@@ -16,7 +16,7 @@ import java.util.Random;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
+//com.example.client_dsa
 public class RegistreActivity extends AppCompatActivity {
     /*Declaració de variables */
     String id;

@@ -6,10 +6,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.client_dsa.Classes.LoginComp;
+import com.example.client_dsa.Classes.RegisterComp;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -34,27 +36,36 @@ public class LoginActivity extends AppCompatActivity {
 
         api = APIimp.getAPI();
 
-        //S'obté les dades introduïdes per l'usuari
-        String username = nomUsuari.getText().toString();
-        String password = contra.getText().toString();
+
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d("Valor usuari:", String.valueOf(username));
-                Log.d("Valor contra:", String.valueOf(password));
+                //S'obté les dades introduïdes per l'usuari
+                String username = nomUsuari.getText().toString();
+                String password = contra.getText().toString();
+
 
                 LoginComp loginComp = new LoginComp(username, password);
+                Call<LoginComp> call = api.login(loginComp);
 
-                api.login(loginComp).enqueue(new Callback<LoginComp>() {
+                call.enqueue(new Callback<LoginComp>() {
+
                     @Override
                     public void onResponse(Call<LoginComp> call, Response<LoginComp> response) {
+                        if(!response.isSuccessful()){
+                            Log.d("LOGIN","USUARI NO LOGEJAT");
+                            Toast.makeText(LoginActivity.this,"Error al logejar", Toast.LENGTH_LONG).show();
+                            return;
+                        }
+
                         Log.d("LOGIN", "200 OK");
 
+                        Toast.makeText(LoginActivity.this,"User logejat", Toast.LENGTH_LONG).show();
                         Intent intent = new Intent(LoginActivity.this, PrincipalActivity.class);
                         startActivity(intent);
-                    }
 
+                    }
                     @Override
                     public void onFailure(Call<LoginComp> call, Throwable t) {
                         Log.d("LOGIN", "ERROR");
@@ -65,9 +76,6 @@ public class LoginActivity extends AppCompatActivity {
             }
 
         });
-
-
-
 
         registreButton.setOnClickListener(new View.OnClickListener() {
 
