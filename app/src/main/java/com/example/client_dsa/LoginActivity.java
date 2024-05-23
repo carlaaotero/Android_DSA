@@ -1,11 +1,14 @@
 package com.example.client_dsa;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,7 +25,11 @@ public class LoginActivity extends AppCompatActivity {
     private EditText contra;
     private Button loginButton;
     private Button registreButton;
+    public ProgressBar progressBar;
+    private String USUARI = "Usuari";
+    private String SESSIO_INICIADA = "isLoggedIn";
     API api;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,58 +40,66 @@ public class LoginActivity extends AppCompatActivity {
         contra = findViewById(R.id.contra);
         loginButton = findViewById(R.id.loginButton);
         registreButton = findViewById(R.id.registreButton);
+        progressBar = findViewById(R.id.progressBar);
 
         api = APIimp.getAPI();
+        SharedPreferences sharedPreferences = getSharedPreferences(USUARI, Context.MODE_PRIVATE);
+        boolean isLogged = sharedPreferences.getBoolean(SESSIO_INICIADA, false);
 
+        if (isLogged) {
+            // Ir a la actividad principal si el usuario ya está registrado
+            Intent intent = new Intent(LoginActivity.this, PrincipalActivity.class);
+            startActivity(intent);
+        } else {
+            loginButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    progressBar.setVisibility(View.VISIBLE);
+                    //S'obté les dades introduïdes per l'usuari
+                    String username = nomUsuari.getText().toString();
+                    String password = contra.getText().toString();
 
+                    LoginComp loginComp = new LoginComp(username, password);
+                    Call<LoginComp> call = api.login(loginComp);
 
-        loginButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //S'obté les dades introduïdes per l'usuari
-                String username = nomUsuari.getText().toString();
-                String password = contra.getText().toString();
+                    call.enqueue(new Callback<LoginComp>() {
+                        @Override
+                        public void onResponse(Call<LoginComp> call, Response<LoginComp> response) {
+                            if (!response.isSuccessful()) {
+                                Log.d("LOGIN", "USUARI NO LOGEJAT");
+                                Toast.makeText(LoginActivity.this, "Error al logejar", Toast.LENGTH_LONG).show();
+                                return;
+                            }
+                            progressBar.setVisibility(View.INVISIBLE);
+                            Log.d("LOGIN", "200 OK");
+                            Toast.makeText(LoginActivity.this, "User logejat", Toast.LENGTH_LONG).show();
+                            Intent intent = new Intent(LoginActivity.this, PrincipalActivity.class);
+                            startActivity(intent);
 
-
-                LoginComp loginComp = new LoginComp(username, password);
-                Call<LoginComp> call = api.login(loginComp);
-
-                call.enqueue(new Callback<LoginComp>() {
-
-                    @Override
-                    public void onResponse(Call<LoginComp> call, Response<LoginComp> response) {
-                        if(!response.isSuccessful()){
-                            Log.d("LOGIN","USUARI NO LOGEJAT");
-                            Toast.makeText(LoginActivity.this,"Error al logejar", Toast.LENGTH_LONG).show();
-                            return;
+                            SharedPreferences sharedPreferences = getSharedPreferences(USUARI, Context.MODE_PRIVATE);
+                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                            editor.putBoolean(SESSIO_INICIADA, true);
+                            editor.apply();
                         }
 
-                        Log.d("LOGIN", "200 OK");
-
-                        Toast.makeText(LoginActivity.this,"User logejat", Toast.LENGTH_LONG).show();
-                        Intent intent = new Intent(LoginActivity.this, PrincipalActivity.class);
-                        startActivity(intent);
-
-                    }
-                    @Override
-                    public void onFailure(Call<LoginComp> call, Throwable t) {
-                        Log.d("LOGIN", "ERROR");
-                    }
-                });
-
-
-            }
-
-        });
+                        @Override
+                        public void onFailure(Call<LoginComp> call, Throwable t) {
+                            Log.d("LOGIN", "ERROR");
+                        }
+                    });
+                }
+            });
+        }
 
         registreButton.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(LoginActivity.this, RegistreActivity.class);
                 startActivity(intent);
             }
         });
+
+
     }
     public void anarPrincipal(View view)
     {

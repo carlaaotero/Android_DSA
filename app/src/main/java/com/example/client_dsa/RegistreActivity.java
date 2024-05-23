@@ -5,9 +5,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+import android.widget.ProgressBar;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -26,6 +28,7 @@ public class RegistreActivity extends AppCompatActivity {
     private EditText contra;
     private EditText contra2;
     private Button registre;
+    private ProgressBar progressBar;
     API api;
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +45,7 @@ public class RegistreActivity extends AppCompatActivity {
         nomUsuari = findViewById(R.id.nomUsuarii);
         contra = findViewById(R.id.contra1);
         contra2 = findViewById(R.id.contra2);
+        progressBar = findViewById(R.id.progressBar2);
 
         registre = findViewById(R.id.registre);
 
@@ -51,6 +55,7 @@ public class RegistreActivity extends AppCompatActivity {
         registre.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                progressBar.setVisibility(View.VISIBLE);
                 //S'obté les dades introduïdes per l'usuari
                 String nombre = nom.getText().toString();
                 String apellido = cognom.getText().toString();
@@ -75,7 +80,6 @@ public class RegistreActivity extends AppCompatActivity {
                             Toast.makeText(RegistreActivity.this,"Error al registrar", Toast.LENGTH_LONG).show();
                             return;
                         }
-
                         Log.d("REGISTRE", "201 OK");
 
                         //RegisterComp usuari = response.body();
@@ -84,19 +88,13 @@ public class RegistreActivity extends AppCompatActivity {
                         startActivity(intent);
 
                     }
-
                     @Override
                     public void onFailure(Call<RegisterComp> call, Throwable t) {
                         Log.d("REGISTRE", "ERROR:" + t.getMessage());
                         Toast.makeText(RegistreActivity.this,"ERROR:" + t.getMessage(), Toast.LENGTH_LONG).show();
                     }
-
                 });
-
-
-
             }
-
         });
     }
 }
