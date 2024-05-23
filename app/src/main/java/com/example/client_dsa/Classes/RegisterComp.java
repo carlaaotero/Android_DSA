@@ -3,26 +3,26 @@ package com.example.client_dsa.Classes;
 public class RegisterComp {
     String nom;
     String cognom;
-    String nomUsuari;
-    String contra;
-    String contra2;
+    String nomusuari;
+    String password;
+    String password2;
 
-    public RegisterComp (String nom, String cognom, String nomUsuari, String contra, String contra2){
+    public RegisterComp (String nom, String cognom, String nomusuari, String password, String password2){
         this.nom=nom;
         this.cognom = cognom;
-        this.nomUsuari = nomUsuari;
-        this.contra=contra;
-        this.contra2 = contra2;
+        this.nomusuari = nomusuari;
+        this.password=password;
+        this.password2 = password2;
     }
 
     public void setNom(String nom) {this.nom = nom;}
     public String getNom() {return nom;}
-    public void setContra(String contra) {this.contra = contra;}
-    public String getContra() {return contra;}
+    public void setPassword(String password) {this.password = password;}
+    public String getPassword() {return password;}
     public void setCognom(String cognom) {this.cognom = cognom;}
     public String getCognom() {return cognom;}
-    public void setNomUsuari(String nomUsuari) {this.nomUsuari = nomUsuari;}
-    public String getNomUsuari() {return nomUsuari;}
-    public void setContra2(String contra2) {this.contra2 = contra2;}
-    public String getContra2() {return contra2;}
+    public void setNomusuari(String nomusuari) {this.nomusuari = nomusuari;}
+    public String getNomUsuari() {return nomusuari;}
+    public void setPassword2(String password2) {this.password2 = password2;}
+    public String getPassword2() {return password2;}
 }
