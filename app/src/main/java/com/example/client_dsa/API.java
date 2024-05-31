@@ -24,4 +24,7 @@ public interface API {
     //Per auntenticar l'usuari
     // @GET("/user")
     //Call<Usuari> getUserDetails(@Header("Authorization") String credentials);
+
+    @GET("stats/ranking")
+    Call<Usuari> ranking(@Body Usuari ranking);
 }

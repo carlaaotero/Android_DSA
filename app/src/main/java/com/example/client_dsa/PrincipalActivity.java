@@ -18,6 +18,7 @@ public class PrincipalActivity extends AppCompatActivity {
         Button usuari = findViewById(R.id.Usuari);
         Button botiga = findViewById(R.id.Botiga);
         Button jugar = findViewById(R.id.jugar);
+        Button ranking = findViewById(R.id.ranking);
 
         botiga.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -30,6 +31,13 @@ public class PrincipalActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(PrincipalActivity.this, UsuariActivity.class);
+                startActivity(intent);
+            }
+        });
+        ranking.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(PrincipalActivity.this, RankingActivity.class);
                 startActivity(intent);
             }
         });
