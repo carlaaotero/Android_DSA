@@ -64,6 +64,9 @@
             android:exported="true"
             android:theme="@style/Theme.Client_dsa">
         </activity>
+        <activity
+            android:name=".RankingActivity">
+        </activity>
 
     </application>
 
