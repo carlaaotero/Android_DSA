@@ -1,7 +1,16 @@
-Segona versió:
-- Login i registre funcionen correctament.
-- S'ha implementat una Progress Bar
-- S'ha implementat una Splash screen
--Un usuari que ha iniciat sessió a un dispositiu no cal que torni a escriure les seves credencials
+Novena versió:
+- Login i registre implementat correctament
+- Shared Preference implementat correctament
+- Splash screen implementat correctament
+- Progress Bar implementat correctament -- falta implementar als minims
+- Usuari no acabat
+- Botiga no acabat
+- NO BBDD 
 
+
+MINIM 2_ PARTICIPANTS
+- Carla Otero -- issues -- implementat correctament
+- Daniel Perez -- ranking puntuació -- NO implementat
+- Andrea Zapata -- FAQs -- NO implementat
+- Jana Corsellas -- Consultas -- NO implementat
 
