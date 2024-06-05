@@ -73,13 +73,17 @@ public class LoginActivity extends AppCompatActivity {
                             progressBar.setVisibility(View.INVISIBLE);
                             Log.d("LOGIN", "200 OK");
                             Toast.makeText(LoginActivity.this, "User logejat", Toast.LENGTH_LONG).show();
-                            Intent intent = new Intent(LoginActivity.this, PrincipalActivity.class);
-                            startActivity(intent);
+                            //Intent intent = new Intent(LoginActivity.this, PrincipalActivity.class);
+
+                            String nomusuariPerfil = nomUsuari.getText().toString();
 
                             SharedPreferences sharedPreferences = getSharedPreferences(USUARI, Context.MODE_PRIVATE);
                             SharedPreferences.Editor editor = sharedPreferences.edit();
                             editor.putBoolean(SESSIO_INICIADA, true);
+                            editor.putString("USERNAME",nomusuariPerfil);
                             editor.apply();
+                            //startActivity(intent);
+                            finish();
                         }
 
                         @Override
@@ -111,4 +115,10 @@ public class LoginActivity extends AppCompatActivity {
         Intent intent = new Intent(LoginActivity.this, RegistreActivity.class);
         startActivity(intent);
     }
+    public void anarMain(View view)
+    {
+        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+        startActivity(intent);
+    }
+
 }

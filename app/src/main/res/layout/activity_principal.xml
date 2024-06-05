@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
@@ -56,12 +56,29 @@
         app:layout_constraintVertical_bias="0.262" />
 
     <Button
-        android:id="@+id/ranking"
+        android:id="@+id/Issue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="RANKING"
-        app:layout_constraintBottom_toBottomOf="@+id/portada1"
+        android:onClick="anarIssue"
+        android:text="Issue"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.509"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Botiga" />
+        app:layout_constraintTop_toTopOf="@+id/portada1"
+        app:layout_constraintVertical_bias="0.396" />
+
+    <Button
+        android:id="@+id/enrere2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="anarLogin"
+        android:text="exit"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.086"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.939" />
 </androidx.constraintlayout.widget.ConstraintLayout>

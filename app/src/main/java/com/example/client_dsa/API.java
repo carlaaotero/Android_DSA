@@ -6,6 +6,8 @@ import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
+
 public interface API {
     //Un usuari es registra
     @POST("usuaris/registreUsuari")
@@ -16,15 +18,21 @@ public interface API {
     Call<LoginComp> login(@Body LoginComp login);
 
     //Retorna una llista amb els objectes de la botiga
-    @GET("items/llista")
+    @GET("items/llistaUsuaris")
     Call<Item> getItems(@Body Item llistaItem);
+
+    @GET("usuaris/getPerfil/{nomusuari}")
+    Call<Usuari> getUsuariAPI(@Path("nomusuari") String nomusuari);
+
+
+    @POST("issues/addIssue")
+    Call<Issue> addIssue(@Body Issue issue);
+
+
 
     //FALTA @POST per quan compres un item
 
     //Per auntenticar l'usuari
     // @GET("/user")
     //Call<Usuari> getUserDetails(@Header("Authorization") String credentials);
-
-    @GET("stats/ranking")
-    Call<Usuari> ranking(@Body Usuari ranking);
 }

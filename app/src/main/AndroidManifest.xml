@@ -38,6 +38,7 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>-->
         <activity
             android:name=".LoginActivity"
@@ -65,7 +66,9 @@
             android:theme="@style/Theme.Client_dsa">
         </activity>
         <activity
-            android:name=".RankingActivity">
+            android:name="IssueActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Client_dsa">
         </activity>
 
     </application>

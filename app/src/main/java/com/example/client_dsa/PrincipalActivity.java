@@ -18,7 +18,8 @@ public class PrincipalActivity extends AppCompatActivity {
         Button usuari = findViewById(R.id.Usuari);
         Button botiga = findViewById(R.id.Botiga);
         Button jugar = findViewById(R.id.jugar);
-        Button ranking = findViewById(R.id.ranking);
+        Button issue = findViewById(R.id.Issue);
+
 
         botiga.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -34,13 +35,6 @@ public class PrincipalActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        ranking.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(PrincipalActivity.this, RankingActivity.class);
-                startActivity(intent);
-            }
-        });
     }
 
     public void anarUsuari(View view)
@@ -51,6 +45,16 @@ public class PrincipalActivity extends AppCompatActivity {
     public void anarBotiga(View view)
     {
         Intent intent = new Intent(PrincipalActivity.this, BotigaActivity.class);
+        startActivity(intent);
+    }
+    public void anarIssue(View view)
+    {
+        Intent intent = new Intent(PrincipalActivity.this, IssueActivity.class);
+        startActivity(intent);
+    }
+    public void anarLogin(View view)
+    {
+        Intent intent = new Intent(PrincipalActivity.this, LoginActivity.class);
         startActivity(intent);
     }
 

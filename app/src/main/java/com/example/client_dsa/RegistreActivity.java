@@ -97,4 +97,9 @@ public class RegistreActivity extends AppCompatActivity {
             }
         });
     }
+    public void anarLogin(View view)
+    {
+        Intent intent = new Intent(RegistreActivity.this, LoginActivity.class);
+        startActivity(intent);
+    }
 }
