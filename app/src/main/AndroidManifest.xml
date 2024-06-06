@@ -70,6 +70,11 @@
             android:exported="true"
             android:theme="@style/Theme.Client_dsa">
         </activity>
+        <activity
+            android:name=".FormulariActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Client_dsa">
+        </activity>
 
     </application>
 

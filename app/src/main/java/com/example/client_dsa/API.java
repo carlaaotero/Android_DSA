@@ -28,6 +28,8 @@ public interface API {
     @POST("issues/addIssue")
     Call<Issue> addIssue(@Body Issue issue);
 
+    @POST("usuaris/formulariSolicitud")
+    Call<Formulari> formulari(@Body Formulari formulari);
 
 
     //FALTA @POST per quan compres un item

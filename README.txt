@@ -1,4 +1,4 @@
-Novena versió:
+Desena versió:
 - Login i registre implementat correctament
 - Shared Preference implementat correctament
 - Splash screen implementat correctament
@@ -12,5 +12,5 @@ MINIM 2_ PARTICIPANTS
 - Carla Otero -- issues -- implementat correctament
 - Daniel Perez -- ranking puntuació -- NO implementat
 - Andrea Zapata -- FAQs -- NO implementat
-- Jana Corsellas -- Consultas -- NO implementat
+- Jana Corsellas -- Formulari de consultes -- Implementat
 

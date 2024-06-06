@@ -19,6 +19,7 @@ public class PrincipalActivity extends AppCompatActivity {
         Button botiga = findViewById(R.id.Botiga);
         Button jugar = findViewById(R.id.jugar);
         Button issue = findViewById(R.id.Issue);
+        Button formulari = findViewById(R.id.formulari);
 
 
         botiga.setOnClickListener(new View.OnClickListener() {
@@ -32,6 +33,13 @@ public class PrincipalActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(PrincipalActivity.this, UsuariActivity.class);
+                startActivity(intent);
+            }
+        });
+        formulari.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(PrincipalActivity.this, FormulariActivity.class);
                 startActivity(intent);
             }
         });
@@ -55,6 +63,11 @@ public class PrincipalActivity extends AppCompatActivity {
     public void anarLogin(View view)
     {
         Intent intent = new Intent(PrincipalActivity.this, LoginActivity.class);
+        startActivity(intent);
+    }
+    public void anarFormulari(View view)
+    {
+        Intent intent = new Intent(PrincipalActivity.this, FormulariActivity.class);
         startActivity(intent);
     }
 
