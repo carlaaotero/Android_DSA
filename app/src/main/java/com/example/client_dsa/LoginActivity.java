@@ -73,7 +73,7 @@ public class LoginActivity extends AppCompatActivity {
                             progressBar.setVisibility(View.INVISIBLE);
                             Log.d("LOGIN", "200 OK");
                             Toast.makeText(LoginActivity.this, "User logejat", Toast.LENGTH_LONG).show();
-                            //Intent intent = new Intent(LoginActivity.this, PrincipalActivity.class);
+                            Intent intent = new Intent(LoginActivity.this, PrincipalActivity.class);
 
                             String nomusuariPerfil = nomUsuari.getText().toString();
 
@@ -82,7 +82,7 @@ public class LoginActivity extends AppCompatActivity {
                             editor.putBoolean(SESSIO_INICIADA, true);
                             editor.putString("USERNAME",nomusuariPerfil);
                             editor.apply();
-                            //startActivity(intent);
+                            startActivity(intent);
                             finish();
                         }
 

@@ -5,6 +5,7 @@ public class Formulari {
     String title;
     String message;
     String sender;
+    String id;
 
     public Formulari (){}
     public Formulari(String data, String title, String message, String sender){
