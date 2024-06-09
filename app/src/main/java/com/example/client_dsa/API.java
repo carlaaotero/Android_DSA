@@ -31,6 +31,8 @@ public interface API {
     @POST("usuaris/formulariSolicitud")
     Call<Formulari> formulari(@Body Formulari formulari);
 
+    @GET("/usuaris/FAQs")
+    Call<List<Faq>> getFaqs();
 
     //FALTA @POST per quan compres un item
 
