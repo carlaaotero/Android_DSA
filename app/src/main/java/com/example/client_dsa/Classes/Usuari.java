@@ -10,9 +10,10 @@ public class Usuari {
     int coins; //moneda de canvi
     boolean clau;
     String skin;
+    int puntuacio;
 
-    public Usuari(){}
-    public Usuari(String nom, String cognom, String nomusuari, String password, String password2) {
+    public Usuari(String nom, int puntuacio){}
+    public Usuari(String nom, String cognom, String nomusuari, String password, String password2, int puntuacio) {
         this.nom = nom;
         this.cognom = cognom;
         this.nomusuari = nomusuari;
@@ -21,6 +22,7 @@ public class Usuari {
         this.coins = 0;
         this.clau = false;
         this.skin = "Verd";
+        this.puntuacio = puntuacio;
     }
 
     public String getId() {
@@ -82,7 +84,7 @@ public class Usuari {
     public String getSkin() {
         return skin;
     }
-    public void setSkin(String skin) {
-        this.skin = skin;
-    }
+    public void setSkin(String skin) {this.skin = skin;}
+    public int getPuntuacio() {return puntuacio;}
+    public void setPuntuacio(int puntuacio){this.puntuacio = puntuacio;}
 }

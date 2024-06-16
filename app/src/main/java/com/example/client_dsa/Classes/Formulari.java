@@ -1,11 +1,11 @@
 package com.example.client_dsa.Classes;
 
 public class Formulari {
+    String id;
     String data;
     String title;
     String message;
     String sender;
-    String id;
 
     public Formulari (){}
     public Formulari(String data, String title, String message, String sender){
@@ -14,6 +14,8 @@ public class Formulari {
         this.message = message;
         this.sender = sender;
     }
+    public String getId() {return this.id;}
+    public void setId(String id) {this.id=id;}
     public String getData() {
         return this.data;
     }

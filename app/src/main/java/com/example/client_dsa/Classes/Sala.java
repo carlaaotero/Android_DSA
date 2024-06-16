@@ -17,11 +17,13 @@ public class Sala {
     public void setId(String id){
         this.id = id;
     }
-
     public int getNumeroSala(){
         return numeroSala;
     }
     public void setNumeroSala(int numeroSala){
         this.numeroSala = numeroSala;
     }
+    public boolean isEstatPorta() {return estatPorta;}
+    public void setEstatPorta(boolean estatPorta) {this.estatPorta = estatPorta;}
+
 }

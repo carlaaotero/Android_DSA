@@ -1,6 +1,9 @@
 package com.example.client_dsa;
 
 import com.example.client_dsa.Classes.*;
+
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -39,4 +42,7 @@ public interface API {
     //Per auntenticar l'usuari
     // @GET("/user")
     //Call<Usuari> getUserDetails(@Header("Authorization") String credentials);
+
+    @GET("/usuaris/ranking")
+    Call<List<Usuari>> getRanking();
 }

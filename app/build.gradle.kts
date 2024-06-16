@@ -52,6 +52,8 @@ dependencies {
     implementation ("com.squareup.picasso:picasso:2.71828")// Per fer servir Picasso per les imatges de la Botiga
 // Junit
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.0.0")
+    implementation ("androidx.recyclerview:recyclerview:1.2.1")
+    implementation ("androidx.constraintlayout:constraintlayout:2.0.4")
     //testRuntime("org.junit.jupiter:junit-jupiter-engine:5.0.0")
 // to run JUnit 3/4 tests:
     testImplementation("junit:junit:4.12")

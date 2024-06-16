@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class PrincipalActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_principal);
 
@@ -20,7 +21,7 @@ public class PrincipalActivity extends AppCompatActivity {
         Button jugar = findViewById(R.id.jugar);
         Button issue = findViewById(R.id.Issue);
         Button formulari = findViewById(R.id.formulari);
-
+        Button ranking = findViewById(R.id.Ranking);
 
         botiga.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,6 +41,13 @@ public class PrincipalActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(PrincipalActivity.this, FormulariActivity.class);
+                startActivity(intent);
+            }
+        });
+        ranking.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(PrincipalActivity.this, RankingActivity.class);
                 startActivity(intent);
             }
         });
@@ -68,6 +76,11 @@ public class PrincipalActivity extends AppCompatActivity {
     public void anarFormulari(View view)
     {
         Intent intent = new Intent(PrincipalActivity.this, FormulariActivity.class);
+        startActivity(intent);
+    }
+    public void anarRanking(View view)
+    {
+        Intent intent = new Intent(PrincipalActivity.this, RankingActivity.class);
         startActivity(intent);
     }
 
