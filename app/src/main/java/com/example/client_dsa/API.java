@@ -43,6 +43,6 @@ public interface API {
     // @GET("/user")
     //Call<Usuari> getUserDetails(@Header("Authorization") String credentials);
 
-    @GET("/usuaris/ranking")
-    Call<List<Usuari>> getRanking();
+    /*@GET("/usuaris/ranking")
+    Call<List<Usuari>> getRanking();*/
 }

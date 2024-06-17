@@ -43,6 +43,7 @@ public class LoginActivity extends AppCompatActivity {
         progressBar = findViewById(R.id.progressBar);
 
         api = APIimp.getAPI();
+
         SharedPreferences sharedPreferences = getSharedPreferences(USUARI, Context.MODE_PRIVATE);
         boolean isLogged = sharedPreferences.getBoolean(SESSIO_INICIADA, false);
 

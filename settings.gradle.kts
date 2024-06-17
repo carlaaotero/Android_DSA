@@ -20,7 +20,5 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "Client_dsa"
-include (":app")
-/*include (":app", ":unityLibrary")
-project(":unityLibrary").projectDir = File("path/to/UnityExport/unityLibrary")*/
+include(":app")
  

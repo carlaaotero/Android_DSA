@@ -28,7 +28,7 @@ public class RankingActivity extends AppCompatActivity {
     API api;
     private RecyclerView recyclerView;
 
-    @Override
+    /*@Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ranking);
@@ -64,5 +64,5 @@ public class RankingActivity extends AppCompatActivity {
 
         UsuariAdap usuariAdap= new UsuariAdap(this, ranking_list);
         rankingListView.setAdapter((ListAdapter) usuariAdap);
-    }
+    }*/
 }

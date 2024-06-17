@@ -12,7 +12,9 @@ public class Usuari {
     String skin;
     int puntuacio;
 
-    public Usuari(String nom, int puntuacio){}
+    public Usuari(){}
+
+    //public Usuari(String nom, int puntuacio){}
     public Usuari(String nom, String cognom, String nomusuari, String password, String password2, int puntuacio) {
         this.nom = nom;
         this.cognom = cognom;

@@ -6,7 +6,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 public class APIimp {
     //BASE_URL conté la URL base de l'API del servidor
-    public static final String BASE_URL = "http://10.0.2.2:8080/dsaApp/";
+    public static final String BASE_URL = "http://147.83.7.205:80/dsaApp/";
     private static API api;
 
     /*Constructor privat per evitar que es pugui instanciar externament,

@@ -51,14 +51,6 @@ public class PrincipalActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        /*jugar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(PrincipalActivity.this, JocActivity.class);
-                startActivity(intent);
-            }
-        });*/
-
     }
 
     public void anarUsuari(View view)
@@ -86,7 +78,7 @@ public class PrincipalActivity extends AppCompatActivity {
         Intent intent = new Intent(PrincipalActivity.this, FormulariActivity.class);
         startActivity(intent);
     }
-    public void anarRanking(View view)
+    //public void anarRanking(View view)
     {
         Intent intent = new Intent(PrincipalActivity.this, RankingActivity.class);
         startActivity(intent);
