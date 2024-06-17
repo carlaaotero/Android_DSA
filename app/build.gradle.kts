@@ -1,3 +1,5 @@
+import org.gradle.internal.impldep.org.junit.experimental.categories.Categories.CategoryFilter.include
+
 plugins {
     alias(libs.plugins.androidApplication)
 }
@@ -36,6 +38,7 @@ android {
 
 dependencies {
 
+    //implementation (":unityLibrary")
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.constraintlayout)

@@ -1,4 +1,4 @@
-Onzena versió:
+Dotzena versió:
 - Login i registre implementat correctament
 - Shared Preference implementat correctament
 - Splash screen implementat correctament
@@ -6,6 +6,7 @@ Onzena versió:
 - Usuari no acabat
 - Botiga no acabat
 - NO BBDD 
+- Android connectat amb el backend a la màquina virtual
 
 
 MINIM 2_ PARTICIPANTS
