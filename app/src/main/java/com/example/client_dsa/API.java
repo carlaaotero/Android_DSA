@@ -25,7 +25,7 @@ public interface API {
     @GET("usuaris/getPerfil/{nomusuari}")
     Call<Usuari> getUsuariAPI(@Path("nomusuari") String nomusuari);
 
-    @GET("usuaris/ComprarItem/{nomusuari} {item}")
+    @POST("usuaris/ComprarItem/{nomusuari} {item}")
     Call<Usuari> comprar(@Path("nomusuari") String nomusuari, @Path("item") String item);
 
     //Retorna una llista amb els objectes de la botiga

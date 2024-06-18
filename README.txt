@@ -1,10 +1,10 @@
-Tretzena versió:
+Catorzena versió:
 - Login i registre implementat correctament
 - Shared Preference implementat correctament
 - Splash screen implementat correctament
 - Progress Bar implementat correctament 
 - Usuari (perfil) acabat
-- Botiga no acabat
+- Botiga acabada
 - NO BBDD 
 - Android connectat amb el backend a la màquina virtual (comentat)
 

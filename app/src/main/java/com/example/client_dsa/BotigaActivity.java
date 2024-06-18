@@ -1,9 +1,13 @@
 package com.example.client_dsa;
 
+import static java.lang.Boolean.TRUE;
+
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -11,65 +15,64 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.client_dsa.Classes.Item;
+import com.example.client_dsa.Classes.RegisterComp;
+import com.example.client_dsa.Classes.Usuari;
 
 import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
 public class BotigaActivity extends AppCompatActivity {
     private Button enrereButton;
-    TextView nom1;
-    TextView nom2;
-    TextView nom3;
-    TextView nom4;
-    TextView descripcio1;
-    TextView descripcio2;
-    TextView descripcio3;
-    TextView descripcio4;
-    TextView preu1;
-    TextView preu2;
-    TextView preu3;
-    TextView preu4;
-    Button btnComprat1;
-    Button btnComprat2;
-    Button btnComprat3;
-    Button btnComprat4;
-    API api;
+    private TextView nom1;
+    private TextView nom2;
+    private TextView nom3;
+    private TextView nom4;
+    private TextView descripcio1;
+    private TextView descripcio2;
+    private TextView descripcio3;
+    private TextView descripcio4;
+    private TextView preu1;
+    private TextView preu2;
+    private TextView preu3;
+    private TextView preu4;
+    private Button btnComprat1;
+    private Button btnComprat2;
+    private Button btnComprat3;
+    private Button btnComprat4;
+    private API api;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_botiga);
 
+        // Inicialitza les variables de classe
+        nom1 = findViewById(R.id.nom1);
+        descripcio1 = findViewById(R.id.descripcio1);
+        preu1 = findViewById(R.id.preu1);
+        btnComprat1 = findViewById(R.id.btnComprat1);
 
-        // Referències als elements del layout
-        TextView nom1 = findViewById(R.id.nom1);
-        TextView descripcio1 = findViewById(R.id.descripcio1);
-        TextView preu1 = findViewById(R.id.preu1);
-        Button btnComprat1 = findViewById(R.id.btnComprat1);
+        nom2 = findViewById(R.id.nom2);
+        descripcio2 = findViewById(R.id.descripcio2);
+        preu2 = findViewById(R.id.preu2);
+        btnComprat2 = findViewById(R.id.btnComprat2);
 
-        TextView nom2 = findViewById(R.id.nom2);
-        TextView descripcio2 = findViewById(R.id.descripcio2);
-        TextView preu2 = findViewById(R.id.preu2);
-        Button btnComprat2 = findViewById(R.id.btnComprat2);
+        nom3 = findViewById(R.id.nom3);
+        descripcio3 = findViewById(R.id.descripcio3);
+        preu3 = findViewById(R.id.preu3);
+        btnComprat3 = findViewById(R.id.btnComprat3);
 
-        TextView nom3 = findViewById(R.id.nom3);
-        TextView descripcio3 = findViewById(R.id.descripcio3);
-        TextView preu3 = findViewById(R.id.preu3);
-        Button btnComprat3 = findViewById(R.id.btnComprat3);
-
-        TextView nom4 = findViewById(R.id.nom4);
-        TextView descripcio4 = findViewById(R.id.descripcio4);
-        TextView preu4 = findViewById(R.id.preu4);
-        Button btnComprat4 = findViewById(R.id.btnComprat4);
+        nom4 = findViewById(R.id.nom4);
+        descripcio4 = findViewById(R.id.descripcio4);
+        preu4 = findViewById(R.id.preu4);
+        btnComprat4 = findViewById(R.id.btnComprat4);
 
         api = APIimp.getAPI();
 
         SharedPreferences sharedPreferences = getSharedPreferences("Usuari", Context.MODE_PRIVATE);
         String username = sharedPreferences.getString("USERNAME", null);
-
 
         Call<List<Item>> call = api.getBotiga();
 
@@ -98,22 +101,23 @@ public class BotigaActivity extends AppCompatActivity {
                 int p3 = items.get(2).getPreu();
                 int p4 = items.get(3).getPreu();
 
-                BotigaActivity.this.nom1.setText(n1);
-                BotigaActivity.this.nom2.setText(n2);
-                BotigaActivity.this.nom3.setText(n3);
-                BotigaActivity.this.nom4.setText(n4);
+                // Utilitza les variables de classe sense redeclarar-les
+                nom1.setText(n1);
+                nom2.setText(n2);
+                nom3.setText(n3);
+                nom4.setText(n4);
 
-                BotigaActivity.this.descripcio1.setText(d1);
-                BotigaActivity.this.descripcio2.setText(d2);
-                BotigaActivity.this.descripcio3.setText(d3);
-                BotigaActivity.this.descripcio4.setText(d4);
+                descripcio1.setText(d1);
+                descripcio2.setText(d2);
+                descripcio3.setText(d3);
+                descripcio4.setText(d4);
 
-                BotigaActivity.this.preu1.setText(""+p1);
-                BotigaActivity.this.preu2.setText(""+p2);
-                BotigaActivity.this.preu3.setText(""+p3);
-                BotigaActivity.this.preu4.setText(""+p4);
-
+                preu1.setText("" + p1);
+                preu2.setText("" + p2);
+                preu3.setText("" + p3);
+                preu4.setText("" + p4);
             }
+
             @Override
             public void onFailure(Call<List<Item>> call, Throwable t) {
                 Log.i("SCAPE_ROOM", "on failure", t);
@@ -122,6 +126,108 @@ public class BotigaActivity extends AppCompatActivity {
         });
 
 
+        btnComprat1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Call<Usuari> call = api.comprar(username,"Vermell");
 
+                call.enqueue(new Callback<Usuari>() {
+                    @Override
+                    public void onResponse(Call<Usuari> call, Response<Usuari> response) {
+                        if (!response.isSuccessful()) {
+                            Log.d("COMPRAR", "ERROR");
+                            Toast.makeText(BotigaActivity.this, "Error al trobar les dades", Toast.LENGTH_LONG).show();
+                            return;
+                        }
+                        Usuari usuari = response.body();
+
+                    }
+                    @Override
+                    public void onFailure(Call<Usuari> call, Throwable t) {
+                        Log.i("COMPRAR", "on failure", t);
+                        Toast.makeText(BotigaActivity.this, "Error", Toast.LENGTH_LONG).show();
+                    }
+                });
+
+            }
+        });
+
+        btnComprat2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Call<Usuari> call = api.comprar(username,"Verd");
+
+                call.enqueue(new Callback<Usuari>() {
+                    @Override
+                    public void onResponse(Call<Usuari> call, Response<Usuari> response) {
+                        if (!response.isSuccessful()) {
+                            Log.d("COMPRAR", "ERROR");
+                            Toast.makeText(BotigaActivity.this, "Error al trobar les dades", Toast.LENGTH_LONG).show();
+                            return;
+                        }
+                        Usuari usuari = response.body();
+
+                    }
+                    @Override
+                    public void onFailure(Call<Usuari> call, Throwable t) {
+                        Log.i("COMPRAR", "on failure", t);
+                        Toast.makeText(BotigaActivity.this, "Error", Toast.LENGTH_LONG).show();
+                    }
+                });
+
+            }
+        });
+
+        btnComprat3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Call<Usuari> call = api.comprar(username,"Groc");
+
+                call.enqueue(new Callback<Usuari>() {
+                    @Override
+                    public void onResponse(Call<Usuari> call, Response<Usuari> response) {
+                        if (!response.isSuccessful()) {
+                            Log.d("COMPRAR", "ERROR");
+                            Toast.makeText(BotigaActivity.this, "Error al trobar les dades", Toast.LENGTH_LONG).show();
+                            return;
+                        }
+                        Usuari usuari = response.body();
+
+                    }
+                    @Override
+                    public void onFailure(Call<Usuari> call, Throwable t) {
+                        Log.i("COMPRAR", "on failure", t);
+                        Toast.makeText(BotigaActivity.this, "Error", Toast.LENGTH_LONG).show();
+                    }
+                });
+
+            }
+        });
+
+        btnComprat1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Call<Usuari> call = api.comprar(username,"Blau");
+
+                call.enqueue(new Callback<Usuari>() {
+                    @Override
+                    public void onResponse(Call<Usuari> call, Response<Usuari> response) {
+                        if (!response.isSuccessful()) {
+                            Log.d("COMPRAR", "ERROR");
+                            Toast.makeText(BotigaActivity.this, "Error al trobar les dades", Toast.LENGTH_LONG).show();
+                            return;
+                        }
+                        Usuari usuari = response.body();
+
+                    }
+                    @Override
+                    public void onFailure(Call<Usuari> call, Throwable t) {
+                        Log.i("COMPRAR", "on failure", t);
+                        Toast.makeText(BotigaActivity.this, "Error", Toast.LENGTH_LONG).show();
+                    }
+                });
+
+            }
+        });
     }
 }
