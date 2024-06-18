@@ -23,6 +23,7 @@ public class PrincipalActivity extends AppCompatActivity {
         Button formulari = findViewById(R.id.formulari);
         Button ranking = findViewById(R.id.Ranking);
 
+
         botiga.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -78,11 +79,15 @@ public class PrincipalActivity extends AppCompatActivity {
         Intent intent = new Intent(PrincipalActivity.this, FormulariActivity.class);
         startActivity(intent);
     }
-    //public void anarRanking(View view)
+    public void anarRanking(View view)
     {
         Intent intent = new Intent(PrincipalActivity.this, RankingActivity.class);
         startActivity(intent);
     }
-
+    public void anarFAQ(View view)
+    {
+        Intent intent = new Intent(PrincipalActivity.this, FaqActivity.class);
+        startActivity(intent);
+    }
 
 }

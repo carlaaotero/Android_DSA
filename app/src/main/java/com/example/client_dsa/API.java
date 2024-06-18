@@ -20,12 +20,20 @@ public interface API {
     @POST("usuaris/login")
     Call<LoginComp> login(@Body LoginComp login);
 
-    //Retorna una llista amb els objectes de la botiga
-    @GET("items/llistaUsuaris")
-    Call<Item> getItems(@Body Item llistaItem);
+
 
     @GET("usuaris/getPerfil/{nomusuari}")
     Call<Usuari> getUsuariAPI(@Path("nomusuari") String nomusuari);
+
+    @GET("usuaris/ComprarItem/{nomusuari} {item}")
+    Call<Usuari> comprar(@Path("nomusuari") String nomusuari, @Path("item") String item);
+
+    //Retorna una llista amb els objectes de la botiga
+    @GET("items/LlistaBotiga")
+    Call<List<Item>> getBotiga();
+
+
+
 
 
     @POST("issues/addIssue")

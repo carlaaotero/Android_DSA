@@ -25,7 +25,6 @@ public class UsuariActivity extends AppCompatActivity {
     TextView nomusuari;
     TextView nombre;
     TextView apellido;
-    TextView id;
     TextView diners;
     TextView color;
     TextView key;
@@ -37,10 +36,9 @@ public class UsuariActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_usuari);
 
-        nomusuari = findViewById(R.id.apellido);
+        nomusuari = findViewById(R.id.nomusuari1);
         nombre = findViewById(R.id.nombre);
         apellido = findViewById(R.id.apellido);
-        id = findViewById(R.id.id);
         diners = findViewById(R.id.diners);
         color = findViewById(R.id.color);
         key = findViewById(R.id.key);
@@ -50,17 +48,10 @@ public class UsuariActivity extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences("Usuari", Context.MODE_PRIVATE);
         String username = sharedPreferences.getString("USERNAME", null);
 
-        if (username != null) {
-            nomusuari.setText(username);
-            obtenirDadesUsuari(username);
+        nomusuari.setText(username);
 
-        } else {
-            Toast.makeText(this, "Usuari no encontrado", Toast.LENGTH_LONG).show();
-        }
-
-    }
-    private void obtenirDadesUsuari(String username){
         Call<Usuari> call = api.getUsuariAPI(username);
+
         call.enqueue(new Callback<Usuari>() {
             @Override
             public void onResponse(Call<Usuari> call, Response<Usuari> response) {
@@ -74,14 +65,12 @@ public class UsuariActivity extends AppCompatActivity {
                 String cognom = usuari.getCognom();
                 String skin = usuari.getSkin();
                 boolean clau = usuari.getClau();
-                String id = usuari.getId();
                 int coins = usuari.getCoins();
 
                 UsuariActivity.this.nombre.setText(nom);
                 UsuariActivity.this.apellido.setText(cognom);
                 UsuariActivity.this.color.setText(skin);
-                UsuariActivity.this.id.setText(id);
-                UsuariActivity.this.diners.setText(coins);
+                UsuariActivity.this.diners.setText(""+coins);
 
                 if(clau == TRUE){
                     UsuariActivity.this.key.setText("Té una clau");
@@ -90,16 +79,12 @@ public class UsuariActivity extends AppCompatActivity {
                 }
 
             }
-
             @Override
             public void onFailure(Call<Usuari> call, Throwable t) {
+                Log.i("SCAPE_ROOM", "on failure", t);
                 Toast.makeText(UsuariActivity.this, "Error", Toast.LENGTH_LONG).show();
             }
         });
-    }
-    public void anarMain(View view)
-    {
-        Intent intent = new Intent(UsuariActivity.this, MainActivity.class);
-        startActivity(intent);
+
     }
 }
