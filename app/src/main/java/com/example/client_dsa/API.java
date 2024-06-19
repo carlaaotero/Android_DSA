@@ -10,23 +10,24 @@ import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface API {
     //Un usuari es registra
-    @POST("usuaris/registreUsuari")
+    @POST("usuarisDAO/registreUsuarisDAO")
     Call<RegisterComp> registre(@Body RegisterComp register);
 
     //Un usuari inicia sessió
-    @POST("usuaris/login")
+    @POST("usuarisDAO/loginDAO")
     Call<LoginComp> login(@Body LoginComp login);
 
 
 
-    @GET("usuaris/getPerfil/{nomusuari}")
+    @GET("usuarisDAO/getPerfilDAO/{nomusuari}")
     Call<Usuari> getUsuariAPI(@Path("nomusuari") String nomusuari);
 
-    @POST("usuaris/ComprarItem/{nomusuari} {item}")
-    Call<Usuari> comprar(@Path("nomusuari") String nomusuari, @Path("item") String item);
+    @POST("usuarisDAO/comprarItemDAO/{nomusuari} {color}")
+    Call<Usuari> comprar(@Query("nomusuari") String nomusuari, @Query("color") String item);
 
     //Retorna una llista amb els objectes de la botiga
     @GET("items/LlistaBotiga")
