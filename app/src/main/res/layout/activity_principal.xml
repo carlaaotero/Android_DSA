@@ -63,10 +63,10 @@
         android:text="Issue"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.145"
+        app:layout_constraintHorizontal_bias="0.108"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Usuari"
-        app:layout_constraintVertical_bias="0.127" />
+        app:layout_constraintVertical_bias="0.657" />
 
     <Button
         android:id="@+id/formulari"
@@ -76,22 +76,10 @@
         android:text="Formulari"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.483"
+        app:layout_constraintHorizontal_bias="0.947"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.939" />
-
-    <Button
-        android:id="@+id/Ranking"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="anarRanking"
-        android:text="Ranking"
-        app:layout_constraintBottom_toBottomOf="@+id/portada1"
-        app:layout_constraintEnd_toStartOf="@+id/faq"
-        app:layout_constraintStart_toEndOf="@+id/Issue"
-        app:layout_constraintTop_toBottomOf="@+id/Botiga"
-        app:layout_constraintVertical_bias="0.127" />
+        app:layout_constraintVertical_bias="0.882" />
 
     <Button
         android:id="@+id/faq"
@@ -101,9 +89,22 @@
         android:text="faq"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.9"
+        app:layout_constraintHorizontal_bias="0.934"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/jugar"
-        app:layout_constraintVertical_bias="0.302" />
+        app:layout_constraintVertical_bias="0.657" />
+
+    <Button
+        android:id="@+id/ranking"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="anarRanking"
+        android:text="Ranking"
+        app:layout_constraintBottom_toBottomOf="@+id/portada1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.109"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.882" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

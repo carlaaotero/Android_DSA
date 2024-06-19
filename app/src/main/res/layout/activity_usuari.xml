@@ -3,22 +3,25 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:backgroundTint="#ECF7F8">
     <!--android:backgroundTint="#BFC2C7"
     android:background="#BFC2C7"-->
+
 
     <TextView
         android:id="@+id/formularidesolicitud"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="PERFIL DEL TEU USUARI"
-        android:textSize="24sp"
+        android:fontFamily="sans-serif-black"
+        android:text="PERFIL"
+        android:textSize="34sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.193" />
-
+        app:layout_constraintVertical_bias="0.186" />
 
     <TextView
         android:id="@+id/color"

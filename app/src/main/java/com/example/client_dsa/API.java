@@ -32,10 +32,6 @@ public interface API {
     @GET("items/LlistaBotiga")
     Call<List<Item>> getBotiga();
 
-
-
-
-
     @POST("issues/addIssue")
     Call<Issue> addIssue(@Body Issue issue);
 
@@ -44,8 +40,6 @@ public interface API {
 
     @GET("/usuaris/FAQs")
     Call<List<Faq>> getFaqs();
-
-    //FALTA @POST per quan compres un item
 
     //Per auntenticar l'usuari
     // @GET("/user")

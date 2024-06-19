@@ -21,7 +21,7 @@ public class PrincipalActivity extends AppCompatActivity {
         Button jugar = findViewById(R.id.jugar);
         Button issue = findViewById(R.id.Issue);
         Button formulari = findViewById(R.id.formulari);
-        Button ranking = findViewById(R.id.Ranking);
+        Button ranking = findViewById(R.id.ranking);
 
 
         botiga.setOnClickListener(new View.OnClickListener() {

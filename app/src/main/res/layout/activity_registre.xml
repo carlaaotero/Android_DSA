@@ -26,7 +26,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Contrasenya"
-        android:inputType="text"
+        android:inputType="textPassword"
         android:padding="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/nomUsuarii"
@@ -65,7 +65,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Contrasenya"
-        android:inputType="text"
+        android:inputType="textPassword"
         android:padding="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/contra1"
@@ -93,17 +93,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:visibility="gone"/>
+
     <Button
         android:id="@+id/enrere3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="anarLogin"
         android:text="exit"
-        android:textSize="24sp"
+        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.106"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.038" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -21,7 +21,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class UsuariActivity extends AppCompatActivity {
-    private Button enrereButton;
     TextView nomusuari;
     TextView nombre;
     TextView apellido;
@@ -67,15 +66,15 @@ public class UsuariActivity extends AppCompatActivity {
                 boolean clau = usuari.getClau();
                 int coins = usuari.getCoins();
 
-                UsuariActivity.this.nombre.setText(nom);
-                UsuariActivity.this.apellido.setText(cognom);
-                UsuariActivity.this.color.setText(skin);
-                UsuariActivity.this.diners.setText(""+coins);
+                UsuariActivity.this.nombre.setText("NOM: " +nom);
+                UsuariActivity.this.apellido.setText("COGNOM: "+cognom);
+                UsuariActivity.this.color.setText("SKIN: "+skin);
+                UsuariActivity.this.diners.setText("DINERS: "+coins+ "€");
 
                 if(clau == TRUE){
                     UsuariActivity.this.key.setText("Té una clau");
                 } else{
-                    UsuariActivity.this.key.setText("No té cap clau");
+                    UsuariActivity.this.key.setText("No tens cap clau");
                 }
 
             }
@@ -86,5 +85,11 @@ public class UsuariActivity extends AppCompatActivity {
             }
         });
 
+
+    }
+    public void anarMain(View view)
+    {
+        Intent intent = new Intent(UsuariActivity.this, PrincipalActivity.class);
+        startActivity(intent);
     }
 }

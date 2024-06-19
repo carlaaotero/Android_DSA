@@ -1,4 +1,4 @@
-Catorzena versió:
+Quinzena versió:
 - Login i registre implementat correctament
 - Shared Preference implementat correctament
 - Splash screen implementat correctament

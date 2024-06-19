@@ -134,12 +134,15 @@ public class BotigaActivity extends AppCompatActivity {
                 call.enqueue(new Callback<Usuari>() {
                     @Override
                     public void onResponse(Call<Usuari> call, Response<Usuari> response) {
+
+
                         if (!response.isSuccessful()) {
                             Log.d("COMPRAR", "ERROR");
-                            Toast.makeText(BotigaActivity.this, "Error al trobar les dades", Toast.LENGTH_LONG).show();
+                            Toast.makeText(BotigaActivity.this, "Diners insuficients", Toast.LENGTH_LONG).show();
                             return;
                         }
                         Usuari usuari = response.body();
+                        Toast.makeText(BotigaActivity.this, "Has comprat la Skin Vermella", Toast.LENGTH_LONG).show();
 
                     }
                     @Override
@@ -162,10 +165,11 @@ public class BotigaActivity extends AppCompatActivity {
                     public void onResponse(Call<Usuari> call, Response<Usuari> response) {
                         if (!response.isSuccessful()) {
                             Log.d("COMPRAR", "ERROR");
-                            Toast.makeText(BotigaActivity.this, "Error al trobar les dades", Toast.LENGTH_LONG).show();
+                            Toast.makeText(BotigaActivity.this, "Diners insuficients", Toast.LENGTH_LONG).show();
                             return;
                         }
                         Usuari usuari = response.body();
+                        Toast.makeText(BotigaActivity.this, "Has comprat la Skin Verda", Toast.LENGTH_LONG).show();
 
                     }
                     @Override
@@ -188,10 +192,11 @@ public class BotigaActivity extends AppCompatActivity {
                     public void onResponse(Call<Usuari> call, Response<Usuari> response) {
                         if (!response.isSuccessful()) {
                             Log.d("COMPRAR", "ERROR");
-                            Toast.makeText(BotigaActivity.this, "Error al trobar les dades", Toast.LENGTH_LONG).show();
+                            Toast.makeText(BotigaActivity.this, "Diners insuficients", Toast.LENGTH_LONG).show();
                             return;
                         }
                         Usuari usuari = response.body();
+                        Toast.makeText(BotigaActivity.this, "Has comprat la Skin Groga", Toast.LENGTH_LONG).show();
 
                     }
                     @Override
@@ -204,7 +209,7 @@ public class BotigaActivity extends AppCompatActivity {
             }
         });
 
-        btnComprat1.setOnClickListener(new View.OnClickListener() {
+        btnComprat4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Call<Usuari> call = api.comprar(username,"Blau");
@@ -214,10 +219,11 @@ public class BotigaActivity extends AppCompatActivity {
                     public void onResponse(Call<Usuari> call, Response<Usuari> response) {
                         if (!response.isSuccessful()) {
                             Log.d("COMPRAR", "ERROR");
-                            Toast.makeText(BotigaActivity.this, "Error al trobar les dades", Toast.LENGTH_LONG).show();
+                            Toast.makeText(BotigaActivity.this, "Diners insuficients", Toast.LENGTH_LONG).show();
                             return;
                         }
                         Usuari usuari = response.body();
+                        Toast.makeText(BotigaActivity.this, "Has comprat la Skin Blava", Toast.LENGTH_LONG).show();
 
                     }
                     @Override
@@ -229,5 +235,10 @@ public class BotigaActivity extends AppCompatActivity {
 
             }
         });
+    }
+    public void anarMain(View view)
+    {
+        Intent intent = new Intent(BotigaActivity.this, PrincipalActivity.class);
+        startActivity(intent);
     }
 }
